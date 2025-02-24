@@ -7,6 +7,7 @@ import com.example.MovieReviewPlatform2.mapper.WatchlistMapper;
 import com.example.MovieReviewPlatform2.repository.MovieRepository;
 import com.example.MovieReviewPlatform2.repository.WatchlistRepository;
 import com.example.MovieReviewPlatform2.service.WatchlistService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +22,7 @@ public class WatchlistServiceImpl implements WatchlistService {
     private final WatchlistRepository watchlistRepository;
     private final WatchlistMapper watchlistMapper;
 
+    @Autowired
     public WatchlistServiceImpl(MovieRepository movieRepository,
                                 WatchlistRepository watchlistRepository,
                                 WatchlistMapper watchlistMapper) {

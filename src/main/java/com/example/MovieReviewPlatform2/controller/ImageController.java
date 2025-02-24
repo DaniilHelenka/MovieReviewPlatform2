@@ -1,5 +1,5 @@
-/*
-package com.example.MovieReviewPlatform2.servlet;
+
+package com.example.MovieReviewPlatform2.controller;
 
 import com.example.MovieReviewPlatform2.service.impl.ImageServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -35,4 +35,3 @@ public class ImageController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }
-*/

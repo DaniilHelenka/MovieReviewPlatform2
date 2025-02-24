@@ -32,12 +32,10 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public ResponseEntity<String> registerUser(@RequestBody CreateUserDto userDto,
-                                               @RequestParam("image") Part   image) {
+    public ResponseEntity<String> registerUser(@RequestBody CreateUserDto userDto) {
         try {
             userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
-            userDto.setImage(image); // Assuming your DTO has logic to handle MultipartFile
-            userService.create(userDto);
+           userService.create(userDto);
             return ResponseEntity.ok("User registered successfully");
         } catch (ValidationException exception) {
             return ResponseEntity.badRequest().body("Validation failed: " + exception.getErrors());

@@ -7,6 +7,7 @@ import com.example.MovieReviewPlatform2.mapper.ReviewMapper;
 import com.example.MovieReviewPlatform2.repository.MovieRepository;
 import com.example.MovieReviewPlatform2.repository.ReviewRepository;
 import com.example.MovieReviewPlatform2.service.ReviewService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,7 +23,10 @@ public class ReviewServiceImpl implements ReviewService {
     private final MovieRepository movieRepository;
     private final ReviewMapper reviewMapper;
 
-    public ReviewServiceImpl(ReviewRepository reviewRepository, MovieRepository movieRepository, ReviewMapper reviewMapper) {
+    @Autowired
+    public ReviewServiceImpl(ReviewRepository reviewRepository,
+                             MovieRepository movieRepository,
+                             ReviewMapper reviewMapper) {
         this.reviewRepository = reviewRepository;
         this.movieRepository = movieRepository;
         this.reviewMapper = reviewMapper;

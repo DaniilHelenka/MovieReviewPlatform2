@@ -4,8 +4,10 @@ import com.example.MovieReviewPlatform2.dto.CreateMovieDto;
 import com.example.MovieReviewPlatform2.service.MovieService;
 import com.example.MovieReviewPlatform2.service.impl.MovieServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/admin/movies")
@@ -34,8 +36,18 @@ public class DeleteAndAddMovieRestController {
     /**
      * Добавление фильма
      */
-    @PostMapping("/add")
+    // Метод для загрузки постера
+    @PostMapping(value = "/upload-poster", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<String> uploadPoster(@RequestParam("poster_url") MultipartFile poster_url) {
+        // Сохраняем постер и получаем его название
+        movieServiceImpl.uploadPoster(poster_url);
+        return ResponseEntity.ok("Poster upload");
+    }
+
+    // Метод для добавления фильма
+    @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> addMovie(@RequestBody CreateMovieDto movieDto) {
+        // Загрузка фильма
         movieServiceImpl.addMovie(movieDto);
         return ResponseEntity.ok("Movie added successfully");
     }

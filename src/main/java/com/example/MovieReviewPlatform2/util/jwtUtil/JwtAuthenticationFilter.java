@@ -44,7 +44,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
         filterChain.doFilter(request, response);
     }
-
     // Извлечение JWT из заголовка Authorization (ожидается формат "Bearer <token>")
     private String parseJwt(HttpServletRequest request) {
         String headerAuth = request.getHeader("Authorization");

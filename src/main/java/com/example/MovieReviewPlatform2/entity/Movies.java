@@ -46,4 +46,5 @@ public class Movies {
         this.poster_url = poster_url;
         this.release_date = release_date;
     }
+
 }
